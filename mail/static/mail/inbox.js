@@ -105,7 +105,6 @@ function load_mailbox(mailbox) {
         // Create div for each email
         const newEmail = document.createElement('div'); 
         newEmail.className = singleEmail.read ? 'read': 'unread';
-        newEmail.className = "list-group-item";
         newEmail.innerHTML = `
           <strong>${singleEmail.sender}</strong> ${singleEmail.subject} <p align="right">${singleEmail.timestamp}</p>
         `;

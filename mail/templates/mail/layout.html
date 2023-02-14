@@ -10,9 +10,31 @@
         {% endblock %}
     </head>
     <body>
-        <div class="container">
-            {% block body %}
-            {% endblock %}
+        <div class="row">
+            <div class="sidebar col-lg-2 col-md-3">
+                <h2 style="color: white;"><br><br><br></h2>
+                
+                <div>
+                    <button id="inbox" class="btn btn-link">Bandeja de Entrada</button>
+                </div>
+                <div>
+                    <button id="compose" class="btn btn-link">Redactar Correo</button>
+                </div>
+                <div>
+                    <button id="sent" class="btn btn-link">Enviados</button>
+                </div>
+                <div>
+                    <button id="archived" class="btn btn-link">Archivados</button>
+                </div>
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+                <a class="btn btn-sm btn-primary" href="{% url 'logout' %}">Cerrar sesión</a>
+                <h2 style="color: white;"><br></h2>
+            </div>
+            <div class="container">
+                {% block body %}
+                {% endblock %}
+            </div>
         </div>
+
     </body>
 </html>

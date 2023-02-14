@@ -15,6 +15,8 @@ def index(request):
     # Authenticated users view their inbox
     if request.user.is_authenticated:
         return render(request, "mail/inbox.html")
+    if request.user.is_authenticated:
+        return render(request, "mail/layout.html")
 
     # Everyone else is prompted to sign in
     else:
@@ -34,7 +36,7 @@ def compose(request):
     emails = [email.strip() for email in data.get("recipients").split(",")]
     if emails == [""]:
         return JsonResponse({
-            "error": "At least one recipient required."
+            "error": "Ingrese al menos una dirección."
         }, status=400)
 
     # Convert email addresses to users
@@ -45,7 +47,7 @@ def compose(request):
             recipients.append(user)
         except User.DoesNotExist:
             return JsonResponse({
-                "error": f"User with email {email} does not exist."
+                "error": f"El usuario {email} no existe."
             }, status=400)
 
     # Get contents of email
@@ -69,7 +71,7 @@ def compose(request):
             email.recipients.add(recipient)
         email.save()
 
-    return JsonResponse({"message": "Email sent successfully."}, status=201)
+    return JsonResponse({"mensaje": "Correo enviado exitosamente."}, status=201)
 
 
 @login_required
@@ -89,7 +91,7 @@ def mailbox(request, mailbox):
             user=request.user, recipients=request.user, archived=True
         )
     else:
-        return JsonResponse({"error": "Invalid mailbox."}, status=400)
+        return JsonResponse({"error": "Buzon invalido."}, status=400)
 
     # Return emails in reverse chronologial order
     emails = emails.order_by("-timestamp").all()
@@ -104,7 +106,7 @@ def email(request, email_id):
     try:
         email = Email.objects.get(user=request.user, pk=email_id)
     except Email.DoesNotExist:
-        return JsonResponse({"error": "Email not found."}, status=404)
+        return JsonResponse({"error": "Correo no encontrado."}, status=404)
 
     # Return email contents
     if request.method == "GET":
@@ -141,7 +143,7 @@ def login_view(request):
             return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "mail/login.html", {
-                "message": "Invalid email and/or password."
+                "mensaje": "Correo o contraseña invalida."
             })
     else:
         return render(request, "mail/login.html")
@@ -161,7 +163,7 @@ def register(request):
         confirmation = request.POST["confirmation"]
         if password != confirmation:
             return render(request, "mail/register.html", {
-                "message": "Passwords must match."
+                "mensaje": "La contraseña debe coincidir."
             })
 
         # Attempt to create new user
@@ -171,7 +173,7 @@ def register(request):
         except IntegrityError as e:
             print(e)
             return render(request, "mail/register.html", {
-                "message": "Email address already taken."
+                "mensaje": "Esta dirección de correo ya fue tomada."
             })
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
