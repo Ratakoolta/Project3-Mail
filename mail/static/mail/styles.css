@@ -1,5 +1,5 @@
 textarea {
-    min-height: 400px;
+    min-height: 200px;
 }
 
 .read{
@@ -20,4 +20,17 @@ textarea {
 
 .sidebar{
     background-color: rgb(246, 248, 252);
+}
+
+a{
+    width: 180px;
+    text-align: left;
+}
+
+a:hover{
+    background-color: #EAEBEF;
+}
+
+strong:hover, h6:hover{
+    font-size: 17px;
 }

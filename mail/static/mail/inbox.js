@@ -106,8 +106,8 @@ function load_mailbox(mailbox) {
         const newEmail = document.createElement('div'); 
         newEmail.className = singleEmail.read ? 'read': 'unread';
         newEmail.innerHTML = `
-          <strong>${singleEmail.sender}</strong> ${singleEmail.subject} <p align="right">${singleEmail.timestamp}</p>
-        `;
+          <h6><strong>${singleEmail.sender}    -</strong> ${singleEmail.subject} <p align="right">${singleEmail.timestamp}</p></h6>
+          `;
         newEmail.addEventListener('click', function() {
           view_email(singleEmail.id)        
         });
