@@ -64,7 +64,7 @@ function view_email(id){
               archived: !email.archived
           })
         })
-        .then(() => {load_mailbox('archive')})
+        .then(() => {load_mailbox('inbox')})
       });
       document.querySelector('#emails-details').append(btn_arch);
 
@@ -93,6 +93,7 @@ function load_mailbox(mailbox) {
   document.querySelector('#emails-details').style.display = 'none';
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
+
 
   fetch(`/emails/${mailbox}`)
   .then(response => response.json())
