@@ -36,7 +36,7 @@ function view_email(id){
       document.querySelector('#emails-details').style.display = 'block';  
       // ... do something else with email ...
       document.querySelector('#emails-details').innerHTML = `
-      <ul class="list-group list-group-flush">
+      <ul class="list-group list-group-flush"  id="lista">
         <li class="list-group-item"><strong>From:</strong> ${email.sender}</li>
         <li class="list-group-item"><strong>To:</strong> ${email.recipients}</li>
         <li class="list-group-item"><strong>Subject:</strong> ${email.subject}</li>
@@ -107,7 +107,9 @@ function load_mailbox(mailbox) {
         const newEmail = document.createElement('div'); 
         newEmail.className = singleEmail.read ? 'read': 'unread';
         newEmail.innerHTML = `
-          <h6><strong>${singleEmail.sender}    -</strong> ${singleEmail.subject} <p align="right">${singleEmail.timestamp}</p></h6>
+          <div id=box>
+            <ul><p id=izq><strong>${singleEmail.sender}   -</strong> ${singleEmail.subject}</p> <p id=der>${singleEmail.timestamp}</p><ul>
+          </div>
           `;
         newEmail.addEventListener('click', function() {
           view_email(singleEmail.id)        

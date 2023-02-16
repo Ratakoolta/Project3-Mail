@@ -3,11 +3,11 @@ textarea {
 }
 
 .read{
-   background-color: #F2F6FC; 
-   padding-left: 12px;
-   padding-right: 12px;
-   padding-top: 5px;
-   columns: 2;
+
+    background-color: #F2F6FC; 
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 5px;
 }
 
 .unread{
@@ -15,7 +15,6 @@ textarea {
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 5px;
-    columns: 2; 
 }
 
 .sidebar{
@@ -31,6 +30,27 @@ a:hover{
     background-color: #EAEBEF;
 }
 
-strong:hover, h6:hover{
+ul:hover{
     font-size: 17px;
+}
+
+#lista:hover{
+    font-size: 16px;
+}
+
+#box{
+    border-style: double;
+    border-width: 0.1px;
+}
+
+#der{
+    text-align: right;
+    margin-top: -20px;
+    margin-bottom: -10px;
+    margin-right: 5px;
+}
+
+#izq{
+    margin-top: 5px;
+    margin-bottom: -12px;
 }
