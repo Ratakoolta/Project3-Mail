@@ -55,7 +55,7 @@ function view_email(id){
         })
       }
       const btn_arch = document.createElement('button');
-      btn_arch.innerHTML = email.archived ? "Archive" : "Unarchive" ;
+      btn_arch.innerHTML = email.archived ? "Unarchive" : "Archive" ;
       btn_arch.className = "btn btn-link";
       btn_arch.addEventListener('click', function() {
         fetch(`/emails/${email.id}`, {
