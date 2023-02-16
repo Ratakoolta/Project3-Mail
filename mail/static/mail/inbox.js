@@ -55,7 +55,7 @@ function view_email(id){
         })
       }
       const btn_arch = document.createElement('button');
-      btn_arch.innerHTML = email.archived ? "Desarchivar" : "Archivar" ;
+      btn_arch.innerHTML = email.archived ? "Archive" : "Unarchive" ;
       btn_arch.className = "btn btn-link";
       btn_arch.addEventListener('click', function() {
         fetch(`/emails/${email.id}`, {
@@ -69,7 +69,7 @@ function view_email(id){
       document.querySelector('#emails-details').append(btn_arch);
 
       const btn_reply = document.createElement('button');
-      btn_reply.innerHTML = "Responder"
+      btn_reply.innerHTML = "Reply"
       btn_reply.className = "btn btn-link";
       btn_reply.addEventListener('click', function() {
         compose_email();
@@ -79,7 +79,7 @@ function view_email(id){
           subject = "Re: " + email.subject;
         }
         document.querySelector('#compose-subject').value = subject;
-        document.querySelector('#compose-body').value = `>>>El ${email.timestamp} ${email.sender} escribió: ${email.body}<<<`;
+        document.querySelector('#compose-body').value = `>>>On ${email.timestamp} ${email.sender} wrote: ${email.body}<<<`;
       });
       document.querySelector('#emails-details').append(btn_reply);
   });

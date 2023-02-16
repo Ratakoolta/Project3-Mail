@@ -5,8 +5,8 @@
     <div style="columns: 2;">
         <h2 style="padding-top: 10px; margin-bottom: -10px;">{{ request.user.email }}</h2>
     </div>
-    <div align="right">
-        <p style="margin-bottom: -20px;" class="btn btn-sm btn-link" href="{% url 'logout' %}">Cerrar sesión</p>
+    <div style="margin-top: -20px; margin-left: 87%; margin-bottom: -20px;">
+        <a  class="btn btn-sm btn-link" href="{% url 'logout' %}">Log Out</a>
     </div>
     <hr>
 
@@ -18,19 +18,20 @@
 
 
     <div id="compose-view">
-        <h3>Nuevo Correo</h3>
+        <h3>New Email</h3>
         <form id="compose-form">
             <div class="form-group">
-                De: <input disabled class="form-control" value="{{ request.user.email }}">
+                From: <input disabled class="form-control" value="{{ request.user.email }}">
             </div>
             <div class="form-group">
-                Para: <input id="compose-recipients" class="form-control">
+                To: <input id="compose-recipients" class="form-control" placeholder="Recipients">
             </div>
             <div class="form-group">
-                <input class="form-control" id="compose-subject" placeholder="Asunto">
+                <input class="form-control" id="compose-subject" placeholder="Subject">
             </div>
-            <textarea class="form-control" id="compose-body" placeholder="Mensaje"></textarea>
-            <input type="submit" class="btn btn-primary"/>
+            <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
+            <br>
+            <input type="submit" class="btn btn-primary" value="Send">
         </form>
     </div>
 {% endblock %}
